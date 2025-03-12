@@ -1,0 +1,4 @@
+streamlit>=1.19.0
+ultralytics
+opencv-python
+torch>=2.0.0
