@@ -63,13 +63,13 @@ class Inference:
         """
         Настройка основной страницы приложения.
         """
-        self.st.set_page_config(page_title="YOLO App", layout="wide")
+        self.st.set_page_config(page_title="Defect detection App", layout="wide")
         title_html = """
         <div>
-            <h2 style="color:#FF64DA; text-align:center; margin-bottom:10px;">YOLO Detection App</h2>
-            <iframe src="http://192.168.31.195:4747/video" width="640" height="480" frameborder="0" allowfullscreen></iframe>
+            <h2 style="color:#FF64DA; text-align:center; margin-bottom:10px;">Defect Detection App with AI</h2>
         </div>
         """
+            # <iframe src="http://192.168.31.195:4747/video" width="640" height="480" frameborder="0" allowfullscreen></iframe>
         self.st.markdown(title_html, unsafe_allow_html=True)
 
     def sidebar(self):
@@ -113,8 +113,10 @@ class Inference:
             self.camera_source = camera_index
         else:
             # Для IP-камеры вводится URL или IP адрес
-            ip_address = self.st.sidebar.text_input("Введите URL/IP адрес камеры", value="rtsp://")
+            ip_address = self.st.sidebar.text_input("Введите URL/IP адрес камеры", value="http://")
             self.camera_source = ip_address
+            # self.st.write("IP адрес камеры: ", ip_address)
+            # self.st.write("IP адрес камеры: ", self.camera_source)
 
         # (5) Загрузка модели, если выбор изменился
         if chosen_model != self.loaded_model_name:
